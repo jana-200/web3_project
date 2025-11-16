@@ -1,0 +1,23 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Environnement
+.env
+.env.local
+.env.development
+.env.production
+
+# Build
+dist/
+build/
+
+# Cache
+.cache/
+.vite/
+
+# Mac / OS files
+.DS_Store
