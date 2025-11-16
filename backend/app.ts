@@ -7,8 +7,15 @@ import usersRouter from "./routes/users";
 
 const app = express();
 
+const corsOrigins = [
+  /^http:\/\/localhost/,           // pour le local
+  "http://amazing.you.com",       // autre front local/test
+  process.env.VITE_FRONTEND_URL   // ton frontend déployé sur Vercel
+].filter((v): v is string | RegExp => typeof v === "string" || v instanceof RegExp);
+
 const corsOptions = {
-  origin: [/^http:\/\/localhost/, "http://amazing.you.com"],
+  origin: corsOrigins,
+  methods: ["GET", "POST", "PUT", "DELETE"],
 };
 
 app.use(cors(corsOptions));
