@@ -13,7 +13,7 @@ const App = () => {
   useEffect(() => {
     async function fetchArticles() {
       try {
-        const response = await fetch("http://localhost:3000/articles");
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/articles`);
         
         if (!response.ok) {
           throw new Error("Erreur lors du chargement des articles");
@@ -38,7 +38,7 @@ const App = () => {
         headers: { "Content-Type": "application/json" },
       };
       
-      const response = await fetch("http://localhost:3000/auths/login", options);
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/auths/login`, options);
       
       if (!response.ok) {
         throw new Error(`Erreur: ${response.status}`);
