@@ -10,6 +10,8 @@ const App = () => {
   const [authenticatedUser, setAuthenticatedUser] = useState<AuthenticatedUser | undefined>(undefined);
   const [articles, setArticles] = useState<Article[]>([]);
 
+  console.log("Backend URL:", import.meta.env.VITE_BACKEND_URL);
+
   useEffect(() => {
     async function fetchArticles() {
       try {
