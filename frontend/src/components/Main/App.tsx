@@ -68,14 +68,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    socket.on("visitor-count", (data) => {
-      console.log("Visiteurs connectés :", data.count);
-    });
-
-    socket.on("all-locations", (data) => {
-      console.log("Toutes les positions :", data.visitors);
-    });
-
+    
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((pos) => {
         socket.emit("location", {
@@ -85,7 +78,14 @@ const App = () => {
       });
     }
 
-    socket.emit("get-all-locations");
+    socket.on("visitor-count", (data) => {
+      console.log("Visiteurs connectés :", data.count);
+    });
+
+    socket.on("all-locations", (data) => {
+      console.log("Toutes les positions :", data.visitors);
+    });
+
 
     return () => {
       socket.off("visitor-count");
